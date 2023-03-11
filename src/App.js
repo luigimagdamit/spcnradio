@@ -42,15 +42,25 @@ class Window extends React.Component {
     
 
     let songnames = Object.values(songs)
+    // find out what this does ...
     const songList = songnames.map((song) => 
-      <li class = "song" key = {song.name}><button onClick={() => this.handleClick(song)} value = {song.mp3}>{song.name}</button></li>
+      <div class = "song" key = {song.name}>
+        <h1 
+          onClick={() => this.handleClick(song)} 
+          value = {song.mp3}>{song.name}
+          
+        </h1>
+      </div>
+      // creates a list object 
     );
 
     this.state = {songStore: songnames, songList: songList, currentSong: songnames[0]}
   }
   handleClick(info) {
+    // takes song object as argument
     console.log(this.state.currentSong)
     this.state.currentSong = info
+    // refresh DOM in this part? state is refreshed and the currentSong is found again
     this.forceUpdate();
 
   }
